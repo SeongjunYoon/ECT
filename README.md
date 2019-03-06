@@ -1,17 +1,31 @@
 # ECT System Development Project
-Custom Electrical Capacitance Tomography System with Hardware
-8 Electrodes
 
-Two main parts
-(1) Embedded (C/C++): Multi-module PCB hardware with STM32H743ZI
-(2) Emulator (Python): Computer UI for hardware control by USB-C
+Custom Electrical Capacitance Tomography System with Hardware.
+8 electrodes system.
+
+Two main parts.
+
+1. Embedded (C/C++): Multi-module PCB hardware with STM32H743ZI.
+2. Emulator (Python): Computer UI for hardware control by USB-C.
 
 ---
 # Embedded code
 
+Currently (Mar 6, 2019), STM32H7 MCU Package on STMCubeMX does not support DSP library. Manual import of DSP source files is essential.
+
+1. Download CMSIS Pack from ARM (https://github.com/ARM-software/CMSIS_5).
+2. Create "/DSP_Lib" & "/Lib" folders into "(Project root)/Drivers/CMSIS/".
+3. Duplicate all files in ".../CMSIS/DSP/Source/" into "(Project root)/Drivers/CMSIS/DSP_Lib/".
+4. Duplicate all files in ".../CMSIS/DSP/Include/" into "(Project root)/Drivers/CMSIS/Include/".
+5. Duplicate ".../CMSIS/Lib/ARM" & ".../CMSIS/Lib/GCC" folders into "(Project root)/Drivers/CMSIS/Lib/".
+6. From top menu in Eclipse IDE, go to "Project - Properties - C/C++ General - Paths and Symbols - Symbols" tab.
+Add  "__FPU_PRESENT" and "ARM_MATH_CM7" to Symbol. Allocate "__FPU_PRESENT = 1". No allocation is needed to ARM_MATH_CM7.
+7. From top menu in Eclipse IDE, go to "Project - Properties - C/C++ General - Paths and Symbols - Library Paths" tab.
+Add ".../Drivers/CMSIS/Lib/".
 
 ---
 # Emulator code
+
 Pre-requisite modules
 
 1. Pyqt5
@@ -55,7 +69,10 @@ http://pyopengl.sourceforge.net/
 
 * Refer the offical websites for installation
 
-*** Caution ***
+*** 
+Caution
+***
+
 Ubuntu's udev rule must be modified for usb connection by pyusb
 
 1. Create rule file
