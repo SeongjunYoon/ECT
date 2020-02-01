@@ -1,15 +1,15 @@
-# ECT System Development Project
+# ECT System Development Project #
 
 Custom Electrical Capacitance Tomography System with Hardware.
 8 electrodes system.
 
-Two main parts.
-
+Two main parts:
 1. Embedded (C/C++): Multi-module PCB hardware with STM32H743ZI.
 2. Emulator (Python): Computer UI for hardware control by USB-C.
 
 ---
-# Embedded code
+
+# Embedded code #
 
 Currently (Mar 6, 2019), STM32H7 MCU Package on STMCubeMX does not support DSP library. Manual import of DSP source files is essential.
 
@@ -24,9 +24,10 @@ Add  "__FPU_PRESENT" and "ARM_MATH_CM7" to Symbol. Allocate "__FPU_PRESENT = 1".
 Add ".../Drivers/CMSIS/Lib/".
 
 ---
-# Emulator code
 
-Pre-requisite modules
+# Emulator code #
+
+## Pre-requisite modules ##
 
 1. Pyqt5
 https://pypi.org/project/PyQt5/
@@ -69,9 +70,9 @@ http://pyopengl.sourceforge.net/
 
 * Refer the offical websites for installation
 
-*** 
-Caution
-***
+---
+
+# Caution #
 
 Ubuntu's udev rule must be modified for usb connection by pyusb
 
